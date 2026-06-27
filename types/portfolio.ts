@@ -11,6 +11,32 @@ export interface PlatformInfo {
   brandColors: BrandColors;
 }
 
+export interface ProjectLink {
+  name: string;
+  url: string;
+}
+
+export interface ProjectItem {
+  name: string;
+  image: string;
+  link: string;
+  smallDescription: string;
+  role?: string;
+  technologies?: string[];
+  keyFeatures?: string[];
+  links?: ProjectLink[];
+}
+
+export interface ProjectTab {
+  tabName: string;
+  projects: ProjectItem[];
+}
+
+export interface ProjectsSection {
+  title: string;
+  description?: string;
+  tabs: ProjectTab[];
+}
 export interface NavbarMenuItem {
   name: string;
   link: string;

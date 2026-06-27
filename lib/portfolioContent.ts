@@ -95,46 +95,257 @@ export const portfolioContent: PortfolioWebsiteContent = {
 ],
   },
 
-  projects: {
-    title: "My Projects",
-    description: "Some of my recent works.",
-    tabs: [
-      {
-        tabName: "Full Stack",
-        projects: [
-          {
-            name: "Portfolio Website",
-            image: "/project-1.png",
-            link: "https://example.com",
-            smallDescription: "A modern personal portfolio website.",
-          },
-        ],
-      },
-      {
-        tabName: "Frontend",
-        projects: [
-          {
-            name: "Dashboard UI",
-            image: "/project-2.png",
-            link: "https://example.com",
-            smallDescription: "A clean dashboard interface design.",
-          },
-        ],
-      },
-      {
-        tabName: "Backend",
-        projects: [
-          {
-            name: "API Management System",
-            image: "/project-3.png",
-            link: "https://example.com",
-            smallDescription:
-              "A backend system built with secure APIs, database models, and server-side logic.",
-          },
-        ],
-      },
-    ],
-  },
+projects: {
+  title: "My Projects",
+  description:
+    "A collection of full-stack, frontend, backend, AI, and web/mobile projects I have worked on.",
+
+  tabs: [
+    {
+      tabName: "Full Stack",
+      projects: [
+        {
+          name: "NSAA Aerospace Dynamic Website",
+          image: "/project-nsaa.png",
+          link: "https://aersospacemain-1.onrender.com",
+          role: "Full Stack Developer",
+          smallDescription:
+            "A dynamic NSAA aerospace website built with Next.js, TypeScript, Prisma ORM, PostgreSQL Neon, and Framer Motion. The platform includes an admin control dashboard where admins can easily update the landing page, upload posts, manage images, and control website content.",
+          technologies: [
+            "Next.js",
+            "TypeScript",
+            "Prisma ORM",
+            "PostgreSQL",
+            "Neon",
+            "Framer Motion",
+          ],
+          keyFeatures: [
+            "Dynamic landing page",
+            "Admin control dashboard",
+            "Post and image management",
+            "Frontend and backend integration",
+          ],
+          links: [
+            {
+              name: "Main Website",
+              url: "https://aersospacemain-1.onrender.com",
+            },
+            {
+              name: "Admin Login",
+              url: "https://aersospace-6.onrender.com/login",
+            },
+          ],
+        },
+
+        {
+          name: "Heritage Hub - Ethiopian History Preservation System",
+          image: "/project-heritage-hub.png",
+          link: "https://finalhub.onrender.com/",
+          role: "Full Stack Developer",
+          smallDescription:
+            "A digital archive system designed to document and preserve Ethiopian historical artifacts, documents, and cultural heritage. The platform includes advanced search, multimedia galleries, educational resources, and dashboards for multiple user types.",
+          technologies: [
+            "Next.js",
+            "TypeScript",
+            "Prisma ORM",
+            "PostgreSQL",
+          ],
+          keyFeatures: [
+            "Historical artifact archive",
+            "Advanced search system",
+            "Multimedia galleries",
+            "Educational resources",
+            "Premium, researcher, and public user dashboards",
+            "Company admin, uploader, and reviewer dashboards",
+            "Platform super admin control",
+          ],
+          links: [
+            {
+              name: "View Project",
+              url: "https://finalhub.onrender.com/",
+            },
+          ],
+        },
+
+        {
+          name: "Dear Lottery Management Platform",
+          image: "/project-lottery.png",
+          link: "https://lottery-2-eight.vercel.app",
+          role: "Full Stack Developer",
+          smallDescription:
+            "A web-based management platform upgraded for Dear Lottery operations. The system includes secure ticket scanning, historical result archives, automated daily draw verification, and real-time financial tracking for administrators.",
+          technologies: ["Next.js", "Tailwind CSS"],
+          keyFeatures: [
+            "Secure ticket scanning",
+            "Historical result archive",
+            "Automated daily draw verification",
+            "Real-time financial tracking",
+            "Responsive admin interface",
+          ],
+          links: [
+            {
+              name: "View Project",
+              url: "https://lottery-2-eight.vercel.app",
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      tabName: "AI / Learning",
+      projects: [
+        {
+          name: "Amharic Learning Platform",
+          image: "/project-amharic-learning.png",
+          link: "https://mesa-amharic-learning-app.vercel.app",
+          role: "Full Stack Developer",
+          smallDescription:
+            "An interactive Amharic learning platform that helps users learn Ethiopian letters, also known as Fidel, through writing practice, listening, and AI-powered pronunciation support.",
+          technologies: ["Next.js", "Python", "AI"],
+          keyFeatures: [
+            "Amharic Fidel learning",
+            "Writing practice",
+            "Audio-based learning",
+            "AI pronunciation practice",
+            "Beginner-friendly self-learning flow",
+          ],
+          links: [
+            {
+              name: "View Project",
+              url: "https://mesa-amharic-learning-app.vercel.app",
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      tabName: "Backend Systems",
+      projects: [
+        {
+          name: "Lemi Kura Reporting System",
+          image: "/project-lemi-kura.png",
+          link: "https://reporting.lemikurapp.org",
+          role: "Backend / Full Stack Developer",
+          smallDescription:
+            "A secure reporting system for Lemi Kura Subcity with verifiable submissions, timestamped data, audit trails, and real-time admin monitoring.",
+          technologies: [
+            "Node.js",
+            "Express.js",
+            "React.js",
+            "MySQL",
+            "Sequelize",
+          ],
+          keyFeatures: [
+            "Secure reporting",
+            "Verifiable submissions",
+            "Timestamped data",
+            "Audit trails",
+            "Real-time admin monitoring",
+          ],
+          links: [
+            {
+              name: "View Project",
+              url: "https://reporting.lemikurapp.org",
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      tabName: "Web & Mobile",
+      projects: [
+        {
+          name: "Moteregna Delivery System",
+          image: "/project-moteregna.png",
+          link: "https://moteregna-slpo.vercel.app",
+          role: "Full Stack Developer",
+          smallDescription:
+            "A cross-platform delivery coordination system supporting both web and mobile interfaces. I participated as a full-stack developer on the web admin control system and also contributed to the backend side of the mobile application.",
+          technologies: [
+            "Next.js",
+            "Tailwind CSS",
+            "TypeScript",
+            "Flutter",
+            "PostgreSQL",
+          ],
+          keyFeatures: [
+            "Real-time delivery tracking",
+            "Super Admin dashboard",
+            "Admin dashboard",
+            "Motorist dashboard",
+            "Web and mobile support",
+            "Backend integration for mobile app",
+          ],
+          links: [
+            {
+              name: "View Project",
+              url: "https://moteregna-slpo.vercel.app",
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      tabName: "Frontend",
+      projects: [
+        {
+          name: "Development for Peace Organization Website",
+          image: "/project-dev-for-peace.png",
+          link: "https://devforpeace.org",
+          role: "Frontend Developer",
+          smallDescription:
+            "A multilingual and user-friendly organization website built to communicate the mission of Development for Peace and showcase global projects.",
+          technologies: ["React.js", "Tailwind CSS", "Framer Motion"],
+          keyFeatures: [
+            "Responsive UI",
+            "Accessible design",
+            "Lightweight CMS integration",
+            "Multilingual support",
+            "Project showcase pages",
+          ],
+          links: [
+            {
+              name: "View Project",
+              url: "https://devforpeace.org",
+            },
+          ],
+        },
+
+        {
+          name: "Gibe Market - E-Commerce Platform",
+          image: "/project-gibe-market.png",
+          link: "#",
+          role: "Frontend Developer",
+          smallDescription:
+            "An online marketplace that enables suppliers to showcase and sell products directly to customers through intuitive dashboards and product management tools.",
+          technologies: [
+            "Next.js",
+            "Tailwind CSS",
+            "Material UI",
+            "TypeScript",
+          ],
+          keyFeatures: [
+            "Supplier dashboard",
+            "Product management",
+            "Order tracking",
+            "E-commerce UI",
+            "Responsive marketplace design",
+          ],
+          links: [
+            {
+              name: "View Project",
+              url: "#",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+},
 
   workExperience: {
     headline: "Work Experience",
