@@ -27,7 +27,7 @@ export default function ContactSection() {
     <section
       id="contact"
       className="min-h-screen text-white px-6 md:px-16 lg:px-24 py-24"
-       style={{
+      style={{
         backgroundColor: colors.background || "#070707",
       }}
     >
@@ -60,20 +60,20 @@ export default function ContactSection() {
           </div>
 
           <div className="md:pl-24 text-center">
-            <h2 className="text-5xl md:text-6xl font-extrabold tracking-wide mb-12">
+            <h2 className="text-5xl md:text-6xl font-extrabold tracking-wide mb-8">
               CONTACT
             </h2>
 
-            <p className="text-sm md:text-base leading-relaxed text-white/75 max-w-xl mx-auto mb-20">
+            <p className="text-sm md:text-base leading-relaxed text-white/75 max-w-xl mx-auto mb-12">
               {contact.description}
             </p>
 
-            <div className="space-y-12">
+            <div className="space-y-6">
               {/* Education */}
               <div>
-                <h3 className="font-bold text-lg mb-3">Education</h3>
+                <h3 className="font-bold text-lg mb-2">Education</h3>
 
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {contact.education.map((item, index) => (
                     <div key={index}>
                       <p className="text-white/90 text-sm font-semibold">
@@ -89,13 +89,13 @@ export default function ContactSection() {
                       )}
 
                       {(item.startDate || item.endDate) && (
-                        <p className="text-white/60 text-xs mt-1">
+                        <p className="text-white/60 text-xs mt-0.5">
                           {item.startDate} - {item.endDate}
                         </p>
                       )}
 
                       {item.description && (
-                        <p className="text-white/70 text-sm mt-2">
+                        <p className="text-white/70 text-sm mt-1">
                           {item.description}
                         </p>
                       )}
@@ -106,19 +106,19 @@ export default function ContactSection() {
 
               {/* Phone */}
               <div>
-                <h3 className="font-bold text-lg mb-3">Phone</h3>
+                <h3 className="font-bold text-lg mb-2">Phone</h3>
                 <p className="text-white/80 text-sm">{contact.phone}</p>
               </div>
 
               {/* Email */}
               <div>
-                <h3 className="font-bold text-lg mb-3">Email</h3>
+                <h3 className="font-bold text-lg mb-2">Email</h3>
                 <p className="text-white/80 text-sm">{contact.email}</p>
               </div>
             </div>
 
             {/* Mobile Social Icons */}
-            <div className="flex md:hidden justify-center gap-4 mt-12">
+            <div className="flex md:hidden justify-center gap-4 mt-10">
               {contact.socialMedia.map((social) => {
                 const Icon = socialIconMap[social.icon.toLowerCase()];
 
@@ -147,15 +147,15 @@ export default function ContactSection() {
         {/* Right Contact Form */}
         <div
           className="rounded-lg shadow-[0_25px_60px_rgba(0,0,0,0.25)] px-8 md:px-14 py-12"
-           style={{
-        backgroundColor: colors.background || "#070707",
-      }}
+          style={{
+            backgroundColor: colors.background || "#070707",
+          }}
         >
-          <h3 className="text-3xl font-extrabold text-center mb-12">
+          <h3 className="text-3xl font-extrabold text-center mb-10">
             GET IN TOUCH
           </h3>
 
-          <form className="space-y-9">
+          <form className="space-y-7">
             {contact.contactForm.fields.map((field) => (
               <div key={field.name}>
                 <label className="block text-sm text-white/70 mb-2">
@@ -182,7 +182,7 @@ export default function ContactSection() {
               </div>
             ))}
 
-            <div className="flex justify-center pt-8">
+            <div className="flex justify-center pt-6">
               <button
                 type="submit"
                 className="text-white px-20 py-4 rounded shadow-[8px_8px_0_rgba(0,0,0,0.18)] font-semibold transition hover:opacity-90"

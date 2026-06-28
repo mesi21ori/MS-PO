@@ -347,46 +347,70 @@ projects: {
   ],
 },
 
-  workExperience: {
-    headline: "Work Experience",
-    smallDescription: "Companies and teams I have worked with.",
-    buttonName: "View Resume",
-    buttonLink: "/resume.pdf",
-    companies: [
-      {
-        name: "ABC Tech",
-        role: "Full Stack Developer",
-        smallTextDescription:
-          "Built responsive interfaces, backend APIs, and database-driven web applications using React, Next.js, Node.js, and TypeScript.",
-        startDate: "2023",
-        endDate: "2024",
-      },
-       {
-        name: "mesi Tech",
-        role: "Full Stack Developer",
-        smallTextDescription:
-          "Built responsive interfaces, backend APIs, and database-driven web applications using React, Next.js, Node.js, and TypeScript.",
-        startDate: "2023",
-        endDate: "2024",
-      },
-    ],
-  },
+workExperience: {
+  headline: "Work Experience",
+  smallDescription: "Companies and teams I have worked with.",
+  buttonName: "View Resume",
+  buttonLink: "/resume.pdf",
+  companies: [
+    {
+      name: "Afritech",
+      role: "Full Stack Developer",
+      smallTextDescription:
+        "Developed diverse full-stack solutions including hotel management systems, pharmacy management platforms, e-commerce websites, and company websites. Built responsive interfaces, backend APIs, and database-driven applications.",
+      startDate: "2024",
+      endDate: "2025",
+    },
+    {
+      name: "Crosslight Africa",
+      role: "Frontend Developer",
+      smallTextDescription:
+        "Focused on building interactive and responsive user interfaces using Next.js, Tailwind CSS, and TypeScript. Designed and developed an educational platform for structured learning resources.",
+      startDate: "2023",
+      endDate: "2025",
+    },
+    {
+      name: "Bright Technology",
+      role: "Full Stack Developer",
+      smallTextDescription:
+        "Worked as a full stack developer delivering end-to-end solutions across various projects, handling both frontend interfaces and backend infrastructure.",
+      startDate: "2024",
+      endDate: "current",
+    },
+    {
+      name: "Freelance",
+      role: "Full Stack Developer",
+      smallTextDescription:
+        "Worked with private clients on multiple full-stack projects for over a year, participating in both frontend and backend development. Delivered tailored solutions across various domains.",
+      startDate: "2023",
+      endDate: "current",
+    },
+    {
+      name: "Gumisofts",
+      role: "Frontend Developer",
+      smallTextDescription:
+        "Contributed to the development of e-commerce websites, building responsive and user-friendly interfaces to enhance shopping experiences.",
+      startDate: "2025",
+      endDate: "2025",
+    },
+  ],
+},
 
   contact: {
     description:
       "Feel free to contact me for work, projects, or collaboration.",
     education: [
       {
-        schoolName: "ABC University",
+        schoolName: "Hope Enterprsie Univertiy Collage",
         degree: "BSc",
         fieldOfStudy: "Computer Science",
-        startDate: "2020",
-        endDate: "2024",
+        startDate: "2021",
+        endDate: "2025",
       },
     ],
-    phone: "+251900000000",
-    email: "example@gmail.com",
-    socialMedia: [
+    phone: "+251975336956",
+    email: "mesiori21@gmail.com",
+       socialMedia: [
       {
         name: "LinkedIn",
         icon: "linkedin",
@@ -396,6 +420,21 @@ projects: {
         name: "GitHub",
         icon: "github",
         link: "https://github.com",
+      },
+       {
+        name: "instagram",
+        icon: "instagram",
+        link: "https://instagram.com",
+      },
+       {
+        name: "telegram",
+        icon: "telegram",
+        link: "https://telegram.com",
+      },
+      {
+        name: "facebook",
+        icon: "facebook",
+        link: "https://facebook.com",
       },
     ],
     contactForm: {
@@ -438,6 +477,21 @@ projects: {
         name: "GitHub",
         icon: "github",
         link: "https://github.com",
+      },
+       {
+        name: "instagram",
+        icon: "instagram",
+        link: "https://instagram.com",
+      },
+       {
+        name: "telegram",
+        icon: "telegram",
+        link: "https://telegram.com",
+      },
+      {
+        name: "facebook",
+        icon: "facebook",
+        link: "https://facebook.com",
       },
     ],
     copyrightText: "© 2026 Meseret Shumet. All rights reserved.",

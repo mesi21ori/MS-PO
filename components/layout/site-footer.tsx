@@ -27,22 +27,22 @@ export default function Footer() {
   return (
     <footer
       className="w-full text-[#8f8f8f]"
-       style={{
+      style={{
         backgroundColor: colors.background || "#070707",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-24 py-6">
+      <div className="w-full mx-auto px-6 md:px-16 lg:px-24 py-6">
         <div className="grid grid-cols-1 md:grid-cols-[260px_1fr_330px] items-center gap-8">
           {/* Left Name / Logo */}
           <div className="md:border-r md:border-[#3b3b3b] md:pr-8">
-            <h2 className="text-white text-2xl md:text-3xl font-extrabold tracking-wide">
+            <h2 className="text-white text-xl md:text-2xl font-medium tracking-wide">
               {footer.name}
             </h2>
           </div>
 
-          {/* Middle Links */}
-          <div>
-            <div className="flex flex-wrap gap-6 md:gap-7 text-sm font-semibold mb-3">
+          {/* Middle Links - Centered */}
+          <div className="flex flex-col items-center">
+            <div className="flex flex-wrap gap-6 md:gap-7 text-sm font-semibold mb-3 justify-center">
               {navbar.menuItems.map((item) => (
                 <a
                   key={item.name}
@@ -55,14 +55,14 @@ export default function Footer() {
             </div>
 
             {footer.copyrightText && (
-              <p className="text-sm font-semibold">
+              <p className="text-sm font-semibold text-center">
                 {footer.copyrightText}
               </p>
             )}
           </div>
 
-          {/* Right Social + Support */}
-          <div className="flex flex-col items-start md:items-end gap-3">
+          {/* Right Social - with left border */}
+          <div className="flex flex-col items-start md:items-end gap-3 md:border-l md:border-[#3b3b3b] md:pl-8">
             <div className="flex items-center gap-6 text-lg">
               {footer.socialMedia.map((social) => {
                 const Icon = socialIconMap[social.icon.toLowerCase()];
@@ -86,10 +86,6 @@ export default function Footer() {
                 );
               })}
             </div>
-
-            <p className="text-sm font-semibold">
-              Support: {contact.email}
-            </p>
           </div>
         </div>
       </div>

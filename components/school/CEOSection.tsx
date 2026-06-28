@@ -86,25 +86,27 @@ export default function WorkExperienceSection() {
                   <FaBriefcase size={20} />
                 </div>
 
-                <h4 className="text-xl font-bold text-[#222] mb-2">
-                  {company.name}
-                </h4>
+                <div className="flex flex-col items-start">
+                  <h4 className="text-xl font-bold text-[#222] mb-1">
+                    {company.name}
+                  </h4>
 
-                {company.role && (
-                  <p className="text-base font-bold text-black mb-2">
-                    {company.role}
+                  {company.role && (
+                    <p className="text-base font-bold text-black mb-1">
+                      {company.role}
+                    </p>
+                  )}
+
+                  {(company.startDate || company.endDate) && (
+                    <p className="text-sm text-[#8d98a3] mb-3">
+                      {company.startDate} - {company.endDate || "Present"}
+                    </p>
+                  )}
+
+                  <p className="text-base leading-relaxed text-[#8d98a3] text-left">
+                    {company.smallTextDescription}
                   </p>
-                )}
-
-                {(company.startDate || company.endDate) && (
-                  <p className="text-sm text-[#8d98a3] mb-4">
-                    {company.startDate} - {company.endDate || "Present"}
-                  </p>
-                )}
-
-                <p className="text-lg leading-relaxed text-[#8d98a3]">
-                  {company.smallTextDescription}
-                </p>
+                </div>
               </div>
             );
           })}
@@ -121,26 +123,28 @@ export default function WorkExperienceSection() {
               <FaBriefcase size={22} />
             </div>
 
-            <h4 className="text-3xl font-bold text-[#222] mb-3">
-              {activeCompany.name}
-            </h4>
+            <div className="flex flex-col items-start">
+              <h4 className="text-3xl font-bold text-[#222] mb-1">
+                {activeCompany.name}
+              </h4>
 
-            {activeCompany.role && (
-              <p className="text-lg font-bold text-black mb-3">
-                {activeCompany.role}
+              {activeCompany.role && (
+                <p className="text-lg font-bold text-black mb-1">
+                  {activeCompany.role}
+                </p>
+              )}
+
+              {(activeCompany.startDate || activeCompany.endDate) && (
+                <p className="text-sm text-[#8d98a3] mb-4">
+                  {activeCompany.startDate} -{" "}
+                  {activeCompany.endDate || "Present"}
+                </p>
+              )}
+
+              <p className="text-base leading-relaxed text-[#8d98a3] text-left">
+                {activeCompany.smallTextDescription}
               </p>
-            )}
-
-            {(activeCompany.startDate || activeCompany.endDate) && (
-              <p className="text-sm text-[#8d98a3] mb-6">
-                {activeCompany.startDate} -{" "}
-                {activeCompany.endDate || "Present"}
-              </p>
-            )}
-
-            <p className="text-xl leading-relaxed text-[#8d98a3]">
-              {activeCompany.smallTextDescription}
-            </p>
+            </div>
           </div>
 
           {/* Right Arrow */}
@@ -168,26 +172,28 @@ export default function WorkExperienceSection() {
               <FaBriefcase size={18} />
             </div>
 
-            <h4 className="text-2xl font-bold text-[#222] mb-3">
-              {activeCompany.name}
-            </h4>
+            <div className="flex flex-col items-start">
+              <h4 className="text-2xl font-bold text-[#222] mb-1">
+                {activeCompany.name}
+              </h4>
 
-            {activeCompany.role && (
-              <p className="text-base font-bold text-black mb-3">
-                {activeCompany.role}
+              {activeCompany.role && (
+                <p className="text-base font-bold text-black mb-1">
+                  {activeCompany.role}
+                </p>
+              )}
+
+              {(activeCompany.startDate || activeCompany.endDate) && (
+                <p className="text-sm text-[#8d98a3] mb-3">
+                  {activeCompany.startDate} -{" "}
+                  {activeCompany.endDate || "Present"}
+                </p>
+              )}
+
+              <p className="text-base leading-relaxed text-[#8d98a3] text-left">
+                {activeCompany.smallTextDescription}
               </p>
-            )}
-
-            {(activeCompany.startDate || activeCompany.endDate) && (
-              <p className="text-sm text-[#8d98a3] mb-5">
-                {activeCompany.startDate} -{" "}
-                {activeCompany.endDate || "Present"}
-              </p>
-            )}
-
-            <p className="text-lg leading-relaxed text-[#8d98a3]">
-              {activeCompany.smallTextDescription}
-            </p>
+            </div>
           </div>
 
           {companies.length > 1 && (
