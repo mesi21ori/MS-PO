@@ -275,7 +275,7 @@ export default function HeroSection() {
             alt={`${platform.name} Hero`}
             fill
             priority
-            className="object-cover object-top opacity-20 grayscale"
+            className="object-cover object-top opacity-50 grayscale"
           />
 
           <div className="absolute inset-0 bg-black/65" />
