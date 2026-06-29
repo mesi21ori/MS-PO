@@ -1,19 +1,13 @@
 import Footer from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
-import AboutSection from "@/components/school/about-section";
-import ServicesSection from "@/components/school/admission-section";
-import ClientsSection from "@/components/school/CEOSection";
-import ContactSection from "@/components/school/contact-section";
-import HeroSection from "@/components/school/hero-section";
-import Image from "next/image";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import ContactPage from "@/components/school/contact-page";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-black text-white overflow-hidden">
+    <main className="flex min-h-screen flex-col bg-black text-white overflow-x-hidden">
       {/* Navbar */}
       <SiteHeader />
-      <ContactSection />
+      <ContactPage />
       <Footer />
     </main>
   );

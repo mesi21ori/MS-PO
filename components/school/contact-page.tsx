@@ -19,7 +19,7 @@ const socialIconMap: Record<string, IconType> = {
   github: FaGithub,
 };
 
-export default function ContactSection() {
+export default function ContactPage() {
   const { contact, platform } = portfolioContent;
   const colors = platform.brandColors;
 

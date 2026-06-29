@@ -240,3 +240,28 @@
 .animate-ghost-card {
   animation: ghostCardEnter 500ms ease forwards;
 }
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+body {
+  position: relative;
+}
+
+main {
+  width: 100%;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+
+footer {
+  display: block !important;
+  width: 100% !important;
+  position: relative !important;
+  z-index: 9999 !important;
+}
