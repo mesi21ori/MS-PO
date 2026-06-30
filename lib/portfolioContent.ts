@@ -32,11 +32,11 @@ export const portfolioContent: PortfolioWebsiteContent = {
     buttonName: "Download CV",
     buttonLink: "/Meseret_Shumet_Full_Stack_Developer_CV.pdf",
     imageUrl: "/hero-image.png",
-    socialMedia: [
+      socialMedia: [
       {
         name: "LinkedIn",
         icon: "linkedin",
-        link: "www.linkedin.com/in/meseret-shumet-040147259",
+        link: "https://www.linkedin.com/in/meseret-shumet-040147259/",
       },
       {
         name: "GitHub",
@@ -51,7 +51,7 @@ export const portfolioContent: PortfolioWebsiteContent = {
       {
         name: "telegram",
         icon: "telegram",
-        link: "t.me/Zema_HE",
+        link: "https://t.me/Zema_HE",
       },
       {
         name: "facebook",
@@ -870,11 +870,11 @@ export const portfolioContent: PortfolioWebsiteContent = {
     ],
     phone: "+251975336956",
     email: "mesiori21@gmail.com",
-     socialMedia: [
+      socialMedia: [
       {
         name: "LinkedIn",
         icon: "linkedin",
-        link: "www.linkedin.com/in/meseret-shumet-040147259",
+        link: "https://www.linkedin.com/in/meseret-shumet-040147259/",
       },
       {
         name: "GitHub",
@@ -889,7 +889,7 @@ export const portfolioContent: PortfolioWebsiteContent = {
       {
         name: "telegram",
         icon: "telegram",
-        link: "t.me/Zema_HE",
+        link: "https://t.me/Zema_HE",
       },
       {
         name: "facebook",
@@ -931,7 +931,7 @@ export const portfolioContent: PortfolioWebsiteContent = {
       {
         name: "LinkedIn",
         icon: "linkedin",
-        link: "www.linkedin.com/in/meseret-shumet-040147259",
+        link: "https://www.linkedin.com/in/meseret-shumet-040147259/",
       },
       {
         name: "GitHub",
@@ -946,7 +946,7 @@ export const portfolioContent: PortfolioWebsiteContent = {
       {
         name: "telegram",
         icon: "telegram",
-        link: "t.me/Zema_HE",
+        link: "https://t.me/Zema_HE",
       },
       {
         name: "facebook",
