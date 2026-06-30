@@ -30,33 +30,33 @@ export const portfolioContent: PortfolioWebsiteContent = {
     description:
       "Building robust server-side architectures and translating complex logic into seamless, high-performance web applications with Next.js, Node.js, and TypeScript.",
     buttonName: "Download CV",
-    buttonLink: "/cv.pdf",
+    buttonLink: "/Meseret_Shumet_Full_Stack_Developer_CV.pdf",
     imageUrl: "/hero-image.png",
     socialMedia: [
       {
         name: "LinkedIn",
         icon: "linkedin",
-        link: "https://linkedin.com",
+        link: "www.linkedin.com/in/meseret-shumet-040147259",
       },
       {
         name: "GitHub",
         icon: "github",
-        link: "https://github.com",
+        link: "https://github.com/mesi21ori",
       },
       {
         name: "instagram",
         icon: "instagram",
-        link: "https://instagram.com",
+        link: "https://www.instagram.com/or_ion_23?igsh=cTg4aWZjNHVsNm1t",
       },
       {
         name: "telegram",
         icon: "telegram",
-        link: "https://telegram.com",
+        link: "t.me/Zema_HE",
       },
       {
         name: "facebook",
         icon: "facebook",
-        link: "https://facebook.com",
+        link: "#",
       },
     ],
   },
@@ -811,7 +811,7 @@ export const portfolioContent: PortfolioWebsiteContent = {
     headline: "Work Experience",
     smallDescription: "Companies and teams I have worked with.",
     buttonName: "View Resume",
-    buttonLink: "/resume.pdf",
+    buttonLink: "/Meseret_Shumet_Full_Stack_Developer_CV.pdf",
     companies: [
       {
         name: "Afritech",
@@ -870,31 +870,31 @@ export const portfolioContent: PortfolioWebsiteContent = {
     ],
     phone: "+251975336956",
     email: "mesiori21@gmail.com",
-    socialMedia: [
+     socialMedia: [
       {
         name: "LinkedIn",
         icon: "linkedin",
-        link: "https://linkedin.com",
+        link: "www.linkedin.com/in/meseret-shumet-040147259",
       },
       {
         name: "GitHub",
         icon: "github",
-        link: "https://github.com",
+        link: "https://github.com/mesi21ori",
       },
       {
         name: "instagram",
         icon: "instagram",
-        link: "https://instagram.com",
+        link: "https://www.instagram.com/or_ion_23?igsh=cTg4aWZjNHVsNm1t",
       },
       {
         name: "telegram",
         icon: "telegram",
-        link: "https://telegram.com",
+        link: "t.me/Zema_HE",
       },
       {
         name: "facebook",
         icon: "facebook",
-        link: "https://facebook.com",
+        link: "#",
       },
     ],
     contactForm: {
@@ -927,31 +927,31 @@ export const portfolioContent: PortfolioWebsiteContent = {
 
   footer: {
     name: "Meseret Shumet",
-    socialMedia: [
+     socialMedia: [
       {
         name: "LinkedIn",
         icon: "linkedin",
-        link: "https://linkedin.com",
+        link: "www.linkedin.com/in/meseret-shumet-040147259",
       },
       {
         name: "GitHub",
         icon: "github",
-        link: "https://github.com",
+        link: "https://github.com/mesi21ori",
       },
       {
         name: "instagram",
         icon: "instagram",
-        link: "https://instagram.com",
+        link: "https://www.instagram.com/or_ion_23?igsh=cTg4aWZjNHVsNm1t",
       },
       {
         name: "telegram",
         icon: "telegram",
-        link: "https://telegram.com",
+        link: "t.me/Zema_HE",
       },
       {
         name: "facebook",
         icon: "facebook",
-        link: "https://facebook.com",
+        link: "#",
       },
     ],
     copyrightText: "© 2026 Meseret Shumet. All rights reserved.",

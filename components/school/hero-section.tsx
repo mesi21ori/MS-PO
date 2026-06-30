@@ -312,9 +312,11 @@ export default function HeroSection() {
           </p>
 
           {/* Button */}
+          {/* Button */}
           <div className="flex justify-center md:justify-start">
             <a
               href={heroSection.buttonLink}
+              download="Meseret-Shumet-Full-Stack-Developer-CV.pdf"
               className="inline-flex items-center justify-center rounded-lg px-6 py-2.5 text-sm font-medium text-white transition hover:opacity-90"
               style={{
                 backgroundColor: colors.primary,
@@ -329,7 +331,7 @@ export default function HeroSection() {
             {heroSection.socialMedia.map((social) => {
               const Icon =
                 socialIconMap[
-                  social.icon.toLowerCase() as keyof typeof socialIconMap
+                social.icon.toLowerCase() as keyof typeof socialIconMap
                 ];
 
               if (!Icon) return null;
