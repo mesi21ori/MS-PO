@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { portfolioContent } from "@/lib/portfolioContent";
+import { useSiteContent } from "@/components/providers/site-content-provider";
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { platform, navbar } = portfolioContent;
+  const { platform, navbar } = useSiteContent();
   const colors = platform.brandColors;
 
   return (

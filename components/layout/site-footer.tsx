@@ -1,3 +1,5 @@
+"use client";
+
 import {
   FaFacebookF,
   FaGithub,
@@ -6,7 +8,7 @@ import {
   FaTelegram,
 } from "react-icons/fa";
 import { IconType } from "react-icons";
-import { portfolioContent } from "@/lib/portfolioContent";
+import { useSiteContent } from "@/components/providers/site-content-provider";
 
 const socialIconMap: Record<string, IconType> = {
   facebook: FaFacebookF,
@@ -17,7 +19,7 @@ const socialIconMap: Record<string, IconType> = {
 };
 
 export default function Footer() {
-  const { footer, navbar, platform } = portfolioContent;
+  const { footer, navbar, platform } = useSiteContent();
   const colors = platform.brandColors;
 
   return (
@@ -29,14 +31,12 @@ export default function Footer() {
     >
       <div className="w-full px-6 py-10 md:px-16 lg:px-24">
         <div className="flex flex-col gap-8 text-center md:grid md:grid-cols-[260px_1fr_260px] md:items-center md:text-left">
-          {/* Left Name */}
           <div className="md:border-r md:border-[#3b3b3b] md:pr-8">
             <h2 className="text-white text-xl md:text-2xl font-medium tracking-wide">
               {footer.name}
             </h2>
           </div>
 
-          {/* Center Links */}
           <div className="flex flex-col items-center">
             <div className="flex flex-wrap justify-center gap-5 text-sm font-semibold mb-4">
               {navbar.menuItems.map((item) => (
@@ -57,7 +57,6 @@ export default function Footer() {
             )}
           </div>
 
-          {/* Right Social */}
           <div className="flex justify-center md:justify-end md:border-l md:border-[#3b3b3b] md:pl-8">
             <div className="flex items-center gap-6 text-xl">
               {footer.socialMedia.map((social) => {

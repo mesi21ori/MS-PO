@@ -1,3 +1,5 @@
+"use client";
+
 // import Image from "next/image";
 // import {
 //   FaGithub,
@@ -248,7 +250,7 @@ import {
   FaInstagram,
   FaTelegram,
 } from "react-icons/fa";
-import { portfolioContent } from "@/lib/portfolioContent";
+import { useSiteContent } from "@/components/providers/site-content-provider";
 
 const socialIconMap = {
   github: FaGithub,
@@ -259,7 +261,7 @@ const socialIconMap = {
 };
 
 export default function HeroSection() {
-  const { heroSection, platform } = portfolioContent;
+  const { heroSection, platform } = useSiteContent();
   const colors = platform.brandColors;
 
   return (
