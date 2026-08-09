@@ -1,3 +1,5 @@
+"use client";
+
 // import {
 //   FaReact,
 //   FaNodeJs,
@@ -124,7 +126,7 @@ import {
   SiFirebase,
   SiGraphql,
 } from "react-icons/si";
-import { portfolioContent } from "@/lib/portfolioContent";
+import { useSiteContent } from "@/components/providers/site-content-provider";
 
 const skillIconMap = {
   react: FaReact,
@@ -144,7 +146,7 @@ const skillIconMap = {
 };
 
 export default function AboutSection() {
-  const { aboutMe, platform } = portfolioContent;
+  const { aboutMe, platform } = useSiteContent();
   const colors = platform.brandColors;
 
   const paragraphs = [

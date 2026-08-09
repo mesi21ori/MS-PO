@@ -1,3 +1,5 @@
+"use client";
+
 // // "use client";
 
 // // import { useState } from "react";
@@ -460,14 +462,12 @@
 
 
 
-"use client";
-
 import { useState } from "react";
 import { FaBriefcase, FaChevronRight } from "react-icons/fa";
-import { portfolioContent } from "@/lib/portfolioContent";
+import { useSiteContent } from "@/components/providers/site-content-provider";
 
 export default function WorkExperienceSection() {
-  const { workExperience, platform } = portfolioContent;
+  const { workExperience, platform } = useSiteContent();
   const colors = platform.brandColors;
 
   const companies = workExperience.companies;

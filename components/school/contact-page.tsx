@@ -1,3 +1,5 @@
+"use client";
+
 // import {
 //   FaLinkedinIn,
 //   FaInstagram,
@@ -201,8 +203,6 @@
 // }
 
 
-"use client";
-
 import { FormEvent, useState } from "react";
 import {
   FaLinkedinIn,
@@ -214,7 +214,7 @@ import {
   FaTelegram,
 } from "react-icons/fa6";
 import { IconType } from "react-icons";
-import { portfolioContent } from "@/lib/portfolioContent";
+import { useSiteContent } from "@/components/providers/site-content-provider";
 
 const socialIconMap: Record<string, IconType> = {
   linkedin: FaLinkedinIn,
@@ -228,7 +228,7 @@ const socialIconMap: Record<string, IconType> = {
 };
 
 export default function ContactPage() {
-  const { contact, platform } = portfolioContent;
+  const { contact, platform } = useSiteContent();
   const colors = platform.brandColors;
 
   const [isSending, setIsSending] = useState(false);
