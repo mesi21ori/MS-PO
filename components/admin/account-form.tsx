@@ -2,13 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Field, SectionCard, inputClass } from "@/components/admin/admin-ui";
+import {
+  Field,
+  SectionCard,
+  inputClass,
+} from "@/components/admin/admin-ui";
 
-export default function AccountSettingsForm({
-  initialEmail,
-}: {
-  initialEmail: string;
-}) {
+export default function AccountForm({ initialEmail }: { initialEmail: string }) {
   const router = useRouter();
   const [email, setEmail] = useState(initialEmail);
   const [currentPassword, setCurrentPassword] = useState("");
@@ -29,8 +29,8 @@ export default function AccountSettingsForm({
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email,
           currentPassword,
+          newEmail: email.trim().toLowerCase(),
           newPassword: newPassword || undefined,
           confirmPassword: confirmPassword || undefined,
         }),
@@ -45,7 +45,7 @@ export default function AccountSettingsForm({
       setCurrentPassword("");
       setNewPassword("");
       setConfirmPassword("");
-      if (data.email) setEmail(data.email);
+      setEmail(data.email || email);
       router.refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Update failed");
@@ -56,8 +56,8 @@ export default function AccountSettingsForm({
 
   return (
     <SectionCard
-      title="Account Settings"
-      description="Change the admin login email and password. Current password is required."
+      title="Account"
+      description="Change the admin login email and password used for this dashboard."
     >
       <form onSubmit={handleSubmit} className="mx-auto max-w-xl space-y-5">
         <Field label="Admin email">
@@ -82,32 +82,30 @@ export default function AccountSettingsForm({
           />
         </Field>
 
-        <div className="border-t border-white/10 pt-5">
-          <p className="mb-4 text-sm text-zinc-400">
-            Leave new password blank if you only want to change the email.
+        <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 space-y-4">
+          <p className="text-sm text-zinc-400">
+            Leave new password empty if you only want to change the email.
           </p>
-          <div className="space-y-5">
-            <Field label="New password">
-              <input
-                type="password"
-                className={inputClass}
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                placeholder="At least 8 characters"
-                minLength={8}
-              />
-            </Field>
-            <Field label="Confirm new password">
-              <input
-                type="password"
-                className={inputClass}
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder="Repeat new password"
-                minLength={8}
-              />
-            </Field>
-          </div>
+          <Field label="New password">
+            <input
+              type="password"
+              className={inputClass}
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              placeholder="At least 8 characters"
+              minLength={8}
+            />
+          </Field>
+          <Field label="Confirm new password">
+            <input
+              type="password"
+              className={inputClass}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Repeat new password"
+              minLength={8}
+            />
+          </Field>
         </div>
 
         {error && (
@@ -124,7 +122,7 @@ export default function AccountSettingsForm({
         <button
           type="submit"
           disabled={saving}
-          className="rounded-xl bg-[#ff6b3d] px-6 py-3 text-sm font-semibold transition hover:opacity-90 disabled:opacity-50"
+          className="rounded-xl bg-[#ff6b3d] px-6 py-3 text-sm font-semibold disabled:opacity-50"
         >
           {saving ? "Saving..." : "Update account"}
         </button>

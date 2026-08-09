@@ -65,77 +65,92 @@ export async function requireAdminSession() {
   return session;
 }
 
-export async function ensureAdminUser() {
-  const existing = await prisma.adminUser.findUnique({
+export async function getAdminAccountEmail() {
+  const account = await prisma.adminUser.findUnique({
     where: { id: "main" },
   });
-  if (existing) return existing;
 
-  const email = (process.env.ADMIN_EMAIL || "admin@meseret.dev")
-    .trim()
-    .toLowerCase();
-  const password = process.env.ADMIN_PASSWORD || "Admin@123456";
-  const passwordHash = await bcrypt.hash(password, 10);
-
-  return prisma.adminUser.create({
-    data: {
-      id: "main",
-      email,
-      passwordHash,
-    },
-  });
-}
-
-export async function getAdminUser() {
-  return ensureAdminUser();
+  if (account?.email) return account.email;
+  return process.env.ADMIN_EMAIL?.toLowerCase() || "";
 }
 
 export async function verifyAdminCredentials(email: string, password: string) {
-  const admin = await ensureAdminUser();
-  const normalized = email.trim().toLowerCase();
+  const normalizedEmail = email.trim().toLowerCase();
+  const account = await prisma.adminUser.findUnique({
+    where: { id: "main" },
+  });
 
-  if (normalized !== admin.email.toLowerCase()) {
+  if (account) {
+    if (normalizedEmail !== account.email.toLowerCase()) {
+      return false;
+    }
+    return bcrypt.compare(password, account.passwordHash);
+  }
+
+  const adminEmail = process.env.ADMIN_EMAIL?.toLowerCase();
+  const adminPassword = process.env.ADMIN_PASSWORD;
+
+  if (!adminEmail || !adminPassword) {
     return false;
   }
 
-  return bcrypt.compare(password, admin.passwordHash);
+  return normalizedEmail === adminEmail && password === adminPassword;
 }
 
 export async function updateAdminCredentials(input: {
   currentPassword: string;
-  email?: string;
+  newEmail?: string;
   newPassword?: string;
 }) {
-  const admin = await ensureAdminUser();
-  const valid = await bcrypt.compare(input.currentPassword, admin.passwordHash);
+  const session = await requireAdminSession();
+  const currentEmail = session.email.toLowerCase();
+
+  const valid = await verifyAdminCredentials(
+    currentEmail,
+    input.currentPassword
+  );
 
   if (!valid) {
     throw new Error("CURRENT_PASSWORD_INVALID");
   }
 
-  const nextEmail = input.email?.trim().toLowerCase();
-  const data: { email?: string; passwordHash?: string } = {};
-
-  if (nextEmail && nextEmail !== admin.email.toLowerCase()) {
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(nextEmail)) {
-      throw new Error("EMAIL_INVALID");
-    }
-    data.email = nextEmail;
+  const nextEmail = (input.newEmail || currentEmail).trim().toLowerCase();
+  if (!nextEmail.includes("@")) {
+    throw new Error("INVALID_EMAIL");
   }
+
+  const account = await prisma.adminUser.findUnique({
+    where: { id: "main" },
+  });
+
+  let passwordHash = account?.passwordHash;
 
   if (input.newPassword) {
     if (input.newPassword.length < 8) {
       throw new Error("PASSWORD_TOO_SHORT");
     }
-    data.passwordHash = await bcrypt.hash(input.newPassword, 10);
+    passwordHash = await bcrypt.hash(input.newPassword, 12);
+  } else if (!passwordHash) {
+    const envPassword = process.env.ADMIN_PASSWORD;
+    if (!envPassword) {
+      throw new Error("PASSWORD_REQUIRED");
+    }
+    passwordHash = await bcrypt.hash(envPassword, 12);
   }
 
-  if (!data.email && !data.passwordHash) {
-    throw new Error("NOTHING_TO_UPDATE");
-  }
-
-  return prisma.adminUser.update({
+  await prisma.adminUser.upsert({
     where: { id: "main" },
-    data,
+    create: {
+      id: "main",
+      email: nextEmail,
+      passwordHash,
+    },
+    update: {
+      email: nextEmail,
+      passwordHash,
+    },
   });
+
+  await createAdminSession(nextEmail);
+  return { email: nextEmail };
 }

@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import {
-  createAdminSession,
+  getAdminAccountEmail,
   getAdminSession,
-  getAdminUser,
   updateAdminCredentials,
 } from "@/lib/auth";
 
@@ -12,16 +11,8 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  try {
-    const admin = await getAdminUser();
-    return NextResponse.json({ email: admin.email });
-  } catch (error) {
-    console.error("GET /api/auth/account error:", error);
-    return NextResponse.json(
-      { error: "Failed to load account" },
-      { status: 500 }
-    );
-  }
+  const email = await getAdminAccountEmail();
+  return NextResponse.json({ email: email || session.email });
 }
 
 export async function PUT(request: Request) {
@@ -33,7 +24,9 @@ export async function PUT(request: Request) {
   try {
     const body = await request.json();
     const currentPassword = String(body.currentPassword ?? "");
-    const email = body.email ? String(body.email).trim().toLowerCase() : undefined;
+    const newEmail = body.newEmail
+      ? String(body.newEmail).trim().toLowerCase()
+      : undefined;
     const newPassword = body.newPassword
       ? String(body.newPassword)
       : undefined;
@@ -48,53 +41,58 @@ export async function PUT(request: Request) {
       );
     }
 
-    if (newPassword && newPassword !== confirmPassword) {
+    if (!newEmail && !newPassword) {
       return NextResponse.json(
-        { error: "New password and confirmation do not match" },
+        { error: "Provide a new email and/or new password" },
         { status: 400 }
       );
     }
 
-    const updated = await updateAdminCredentials({
+    if (newPassword && newPassword !== confirmPassword) {
+      return NextResponse.json(
+        { error: "New password confirmation does not match" },
+        { status: 400 }
+      );
+    }
+
+    const result = await updateAdminCredentials({
       currentPassword,
-      email,
+      newEmail,
       newPassword,
     });
 
-    // Refresh session cookie if email changed
-    await createAdminSession(updated.email);
-
     return NextResponse.json({
       success: true,
-      email: updated.email,
+      email: result.email,
       message: "Account updated successfully.",
     });
   } catch (error) {
-    const code = error instanceof Error ? error.message : "";
+    const message =
+      error instanceof Error ? error.message : "Failed to update account";
 
-    if (code === "CURRENT_PASSWORD_INVALID") {
+    if (message === "CURRENT_PASSWORD_INVALID") {
       return NextResponse.json(
         { error: "Current password is incorrect" },
         { status: 400 }
       );
     }
-    if (code === "EMAIL_INVALID") {
-      return NextResponse.json(
-        { error: "Please enter a valid email address" },
-        { status: 400 }
-      );
+    if (message === "INVALID_EMAIL") {
+      return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
     }
-    if (code === "PASSWORD_TOO_SHORT") {
+    if (message === "PASSWORD_TOO_SHORT") {
       return NextResponse.json(
         { error: "New password must be at least 8 characters" },
         { status: 400 }
       );
     }
-    if (code === "NOTHING_TO_UPDATE") {
+    if (message === "PASSWORD_REQUIRED") {
       return NextResponse.json(
-        { error: "Enter a new email and/or new password to update" },
+        { error: "Please set a new password as well" },
         { status: 400 }
       );
+    }
+    if (message === "UNAUTHORIZED") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     console.error("PUT /api/auth/account error:", error);
