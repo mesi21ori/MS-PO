@@ -7,6 +7,7 @@ import {
   Briefcase,
   FolderKanban,
   ImageIcon,
+  KeyRound,
   LayoutDashboard,
   LogOut,
   Mail,
@@ -30,6 +31,7 @@ const navItems = [
   { href: "/admin/contact", label: "Contact", icon: Mail },
   { href: "/admin/messages", label: "Messages", icon: MessageSquare },
   { href: "/admin/footer", label: "Footer", icon: PanelBottom },
+  { href: "/admin/account", label: "Account", icon: KeyRound },
 ];
 
 export default function AdminShell({

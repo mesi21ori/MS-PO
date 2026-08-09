@@ -30,6 +30,7 @@ export default async function AdminDashboardPage() {
     { href: "/admin/contact", label: "Contact" },
     { href: "/admin/messages", label: "Messages" },
     { href: "/admin/footer", label: "Footer" },
+    { href: "/admin/account", label: "Account" },
   ];
 
   return (
