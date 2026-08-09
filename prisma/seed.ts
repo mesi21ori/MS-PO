@@ -1,7 +1,35 @@
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs";
 import { portfolioContent } from "../lib/portfolioContent";
 
 const prisma = new PrismaClient();
+
+async function seedAdminUser() {
+  const existing = await prisma.adminUser.findUnique({
+    where: { id: "main" },
+  });
+
+  if (existing) {
+    console.log("Skipping admin user seed: already exists.");
+    return;
+  }
+
+  const email = (process.env.ADMIN_EMAIL || "admin@meseret.dev")
+    .trim()
+    .toLowerCase();
+  const password = process.env.ADMIN_PASSWORD || "Admin@123456";
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  await prisma.adminUser.create({
+    data: {
+      id: "main",
+      email,
+      passwordHash,
+    },
+  });
+
+  console.log(`Seeded admin user: ${email}`);
+}
 
 function slugify(value: string) {
   return value
@@ -86,6 +114,7 @@ async function seedProjects() {
 }
 
 async function main() {
+  await seedAdminUser();
   await seedSiteContent();
   await seedProjects();
 }

@@ -15,6 +15,7 @@ import {
   Navigation,
   Palette,
   PanelBottom,
+  Settings,
   UserRound,
   X,
 } from "lucide-react";
@@ -30,6 +31,7 @@ const navItems = [
   { href: "/admin/contact", label: "Contact", icon: Mail },
   { href: "/admin/messages", label: "Messages", icon: MessageSquare },
   { href: "/admin/footer", label: "Footer", icon: PanelBottom },
+  { href: "/admin/settings", label: "Settings", icon: Settings },
 ];
 
 export default function AdminShell({

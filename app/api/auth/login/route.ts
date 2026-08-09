@@ -14,7 +14,8 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!verifyAdminCredentials(email, password)) {
+    const valid = await verifyAdminCredentials(email, password);
+    if (!valid) {
       return NextResponse.json(
         { error: "Invalid email or password" },
         { status: 401 }

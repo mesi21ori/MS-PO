@@ -1,5 +1,7 @@
 import { cookies } from "next/headers";
 import { SignJWT, jwtVerify } from "jose";
+import bcrypt from "bcryptjs";
+import { prisma } from "@/lib/prisma";
 
 const COOKIE_NAME = "admin_session";
 const SESSION_DURATION = 60 * 60 * 24 * 7; // 7 days
@@ -63,13 +65,77 @@ export async function requireAdminSession() {
   return session;
 }
 
-export function verifyAdminCredentials(email: string, password: string) {
-  const adminEmail = process.env.ADMIN_EMAIL;
-  const adminPassword = process.env.ADMIN_PASSWORD;
+export async function ensureAdminUser() {
+  const existing = await prisma.adminUser.findUnique({
+    where: { id: "main" },
+  });
+  if (existing) return existing;
 
-  if (!adminEmail || !adminPassword) {
+  const email = (process.env.ADMIN_EMAIL || "admin@meseret.dev")
+    .trim()
+    .toLowerCase();
+  const password = process.env.ADMIN_PASSWORD || "Admin@123456";
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  return prisma.adminUser.create({
+    data: {
+      id: "main",
+      email,
+      passwordHash,
+    },
+  });
+}
+
+export async function getAdminUser() {
+  return ensureAdminUser();
+}
+
+export async function verifyAdminCredentials(email: string, password: string) {
+  const admin = await ensureAdminUser();
+  const normalized = email.trim().toLowerCase();
+
+  if (normalized !== admin.email.toLowerCase()) {
     return false;
   }
 
-  return email === adminEmail && password === adminPassword;
+  return bcrypt.compare(password, admin.passwordHash);
+}
+
+export async function updateAdminCredentials(input: {
+  currentPassword: string;
+  email?: string;
+  newPassword?: string;
+}) {
+  const admin = await ensureAdminUser();
+  const valid = await bcrypt.compare(input.currentPassword, admin.passwordHash);
+
+  if (!valid) {
+    throw new Error("CURRENT_PASSWORD_INVALID");
+  }
+
+  const nextEmail = input.email?.trim().toLowerCase();
+  const data: { email?: string; passwordHash?: string } = {};
+
+  if (nextEmail && nextEmail !== admin.email.toLowerCase()) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(nextEmail)) {
+      throw new Error("EMAIL_INVALID");
+    }
+    data.email = nextEmail;
+  }
+
+  if (input.newPassword) {
+    if (input.newPassword.length < 8) {
+      throw new Error("PASSWORD_TOO_SHORT");
+    }
+    data.passwordHash = await bcrypt.hash(input.newPassword, 10);
+  }
+
+  if (!data.email && !data.passwordHash) {
+    throw new Error("NOTHING_TO_UPDATE");
+  }
+
+  return prisma.adminUser.update({
+    where: { id: "main" },
+    data,
+  });
 }
